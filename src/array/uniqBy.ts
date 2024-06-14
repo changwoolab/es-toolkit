@@ -15,5 +15,14 @@ import { uniqWith } from './uniqWith';
  * ```
  */
 export function uniqBy<T, U>(arr: readonly T[], mapper: (item: T) => U): T[] {
-  return uniqWith(arr, (item1, item2) => mapper(item1) === mapper(item2));
+  const map = new Map<U, T>();
+
+  for (const item of arr) {
+    const key = mapper(item);
+    if (!map.has(key)) {
+      map.set(key, item);
+    }
+  }
+
+  return [...map.values()];
 }
