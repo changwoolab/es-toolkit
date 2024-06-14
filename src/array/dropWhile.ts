@@ -16,6 +16,9 @@
  * // result will be [3, 4, 5] since elements less than 3 are dropped.
  */
 export function dropWhile<T>(arr: readonly T[], canContinueDropping: (item: T) => boolean): T[] {
-  const dropEndIndex = arr.findIndex(item => !canContinueDropping(item));
+  let dropEndIndex = 0;
+  while (dropEndIndex < arr.length && canContinueDropping(arr[dropEndIndex])) {
+    dropEndIndex++;
+  }
   return arr.slice(dropEndIndex);
 }
