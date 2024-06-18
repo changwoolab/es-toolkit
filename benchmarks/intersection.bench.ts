@@ -16,7 +16,7 @@ describe('intersection, small arrays', () => {
 });
 
 describe('intersection, large array with small numbers', () => {
-  const array1 = Array.from({ length: 1000 }, () => Math.floor(Math.random() * 1000));
+  const array1 = Array.from({ length: 10000 }, () => Math.floor(Math.random() * 1000));
   const array2 = Array.from({ length: 10000 }, () => Math.floor(Math.random() * 1000));
 
   bench('es-toolkit', () => {
@@ -29,8 +29,8 @@ describe('intersection, large array with small numbers', () => {
 });
 
 describe('intersection, large array with large numbers', () => {
-  const array1 = Array.from({ length: 10 }, () => Math.floor(Math.random() * 1000000000 + 100000));
-  const array2 = Array.from({ length: 5000 }, () => Math.floor(Math.random() * 1000000000 + 100000));
+  const array1 = Array.from({ length: 10000 }, () => Math.floor(Math.random() * 1000000000 + 100000));
+  const array2 = Array.from({ length: 10000 }, () => Math.floor(Math.random() * 1000000000 + 100000));
 
   bench('es-toolkit', () => {
     intersectionToolkit(array1, array2);
@@ -55,7 +55,7 @@ describe('intersection, large arrays with short strings', () => {
 });
 
 describe('intersection, large arrays with long strings', () => {
-  const array1 = Array.from({ length: 10 }, () => getLongRandomString(1000));
+  const array1 = Array.from({ length: 10000 }, () => getLongRandomString(1000));
   const array2 = Array.from({ length: 10000 }, () => getLongRandomString(1000));
 
   bench('es-toolkit', () => {
