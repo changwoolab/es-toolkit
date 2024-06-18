@@ -20,8 +20,8 @@ import { FastSet } from '../utils/FastSet';
 export function intersection<T>(firstArr: readonly T[], secondArr: readonly T[]): T[] {
   const [largerArr, smallerArr] = distinguishLargerSmallerArray(firstArr, secondArr);
 
-  if (smallerArr.length <= 50 && largerArr.length <= 10000) {
-    // If the smaller array is small enough, using `Array.prototype.includes` is faster than using `Set`.
+  if (smallerArr.length <= 120 && largerArr.length <= 10000) {
+    // If array is small enough, using `Array.prototype.includes` is faster than using `Set`.
     return smallerArr.filter(item => {
       return largerArr.includes(item);
     });
